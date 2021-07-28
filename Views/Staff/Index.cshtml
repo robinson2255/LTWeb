@@ -1,0 +1,53 @@
+﻿@model IEnumerable<LTWeb.Models.Staff>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-6 fa-2x">
+                <strong>Danh Sách Nhân Viên</strong>
+            </div>
+            <div class="col-md-6 text-right">
+                <a href="@Url.Action("Create","Staff")" class="btn btn-sm btn-success">Thêm</a>
+            </div>
+        </div>
+    </div>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pass)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pass)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.StaffID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.StaffID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.StaffID })
+        </td>
+    </tr>
+}
+
+</table>
